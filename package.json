@@ -1,0 +1,45 @@
+{
+  "name": "full-stack-template",
+  "version": "0.1.0",
+  "description": "Template for a full-stack app",
+  "author": "",
+  "private": true,
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "heroku-prebuild": "cd client && npm install",
+    "heroku-postbuild": "npm run prod:client",
+    "start": "npm run prod",
+    "dev:client": "cd client && npm run start",
+    "dev:server": "NODE_ENV=development nodemon -r dotenv/config server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev:server\" \"npm run dev:client\"",
+    "prod:client": "cd client && npm run build",
+    "prod": "NODE_ENV=production node -r dotenv/config server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LifelongLearner13/full-stack-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LifelongLearner13/full-stack-template/issues"
+  },
+  "homepage": "https://github.com/LifelongLearner13/full-stack-template#readme",
+  "devDependencies": {
+    "concurrently": "^3.6.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3",
+    "prettier": "1.14.2"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-promise-router": "^3.0.3",
+    "jsonwebtoken": "^8.3.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.3"
+  }
+}
